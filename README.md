@@ -90,7 +90,7 @@ Nada é herdado do modelo. A prescrição só tem a dieta escolhida, os itens **
 npm test
 ```
 
-Cobrem as regras (idade, datas, prescrição), o preenchimento dos **6 modelos reais** de `public/modelos/` (sem `{{` sobrando, prescrição numerada, continuação, rodapé, logo, puérpera, receita de alta) e a API (login, validação no servidor, CSRF, limite de tentativas, auditoria) com banco em memória.
+Cobrem as regras (idade, datas, prescrição), o preenchimento dos **6 modelos reais** de `public/modelos/` (sem `{{` sobrando, prescrição numerada, continuação, rodapé, logo, puérpera, receita de alta), a **validade do XML** do .docx com texto hostil (&, <, aspas, emoji, caracteres de controle) e volumes grandes, a API (login, validação no servidor, CSRF, limite de tentativas, auditoria) com banco em memória e o **modo produção** (site + modelos servidos, cookie Secure; precisa de `npm run build`).
 
 ## O que ainda não foi verificado
 
