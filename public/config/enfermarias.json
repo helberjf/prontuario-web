@@ -1,0 +1,10 @@
+[
+  { "id": "masculina", "nome": "Masculina", "modelo": "masculina", "textoEnfermaria": "MASCULINA", "catalogo": "internacao" },
+  { "id": "feminina", "nome": "Feminina", "modelo": "feminina", "textoEnfermaria": "FEMININA", "catalogo": "internacao" },
+  { "id": "psiquiatria", "nome": "Psiquiatria", "modelo": "psiquiatria", "textoEnfermaria": "PSIQUIÁTRICA", "catalogo": "internacao" },
+  { "id": "pediatria", "nome": "Pediatria", "modelo": "pediatria", "textoEnfermaria": "PEDIATRIA", "catalogo": "pediatria", "pediatrica": true },
+  { "id": "puerpera", "nome": "Puérpera (mãe e RN)", "modelo": "puerpera", "textoEnfermaria": "PUÉRPERA", "catalogo": "internacao", "puerpera": true },
+  { "id": "ps-masculino", "nome": "Pronto Socorro – Masculino", "modelo": "masculina", "textoEnfermaria": "PRONTO SOCORRO MASCULINO", "catalogo": "internacao" },
+  { "id": "ps-feminino", "nome": "Pronto Socorro – Feminino", "modelo": "feminina", "textoEnfermaria": "PRONTO SOCORRO FEMININO", "catalogo": "internacao" },
+  { "id": "alta-puerpera", "nome": "Puérpera – receita de alta", "modelo": "receita-alta", "textoEnfermaria": "PUÉRPERA", "receitaAlta": true }
+]

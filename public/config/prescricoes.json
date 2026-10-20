@@ -1,0 +1,20 @@
+{
+  "_aviso": "Só entram aqui itens JÁ revisados por um médico (texto completo, com dose, via e frequência). Itens do tipo 'registro' são apenas lembretes de documentação. Nada é marcado por padrão.",
+  "internacao": [
+    { "texto": "CONFERIR E REGISTRAR ALERGIAS", "tipo": "registro" },
+    { "texto": "REGISTRAR SINAIS VITAIS", "tipo": "registro" },
+    { "texto": "REGISTRAR REAVALIAÇÃO MÉDICA", "tipo": "registro" }
+  ],
+  "pediatria": [
+    { "texto": "CONFERIR E REGISTRAR ALERGIAS", "tipo": "registro" },
+    { "texto": "REGISTRAR SINAIS VITAIS", "tipo": "registro" },
+    { "texto": "REGISTRAR REAVALIAÇÃO MÉDICA", "tipo": "registro" }
+  ],
+  "rn": [
+    { "texto": "REGISTRAR SINAIS VITAIS", "tipo": "registro" },
+    { "texto": "REGISTRAR PESO DO RN", "tipo": "registro" }
+  ],
+  "alta": [
+    { "texto": "REGISTRAR ORIENTAÇÕES MÉDICAS DE ALTA", "tipo": "registro" }
+  ]
+}

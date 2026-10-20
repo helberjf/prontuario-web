@@ -1,0 +1,9 @@
+{
+  "nome": "HOSPITAL SÃO BENTO",
+  "endereco": "Praça Frei Ubaldo, 47, Centro, Novo Cruzeiro - MG, CEP 39820-000",
+  "telefone": "(33) 3533-1773",
+  "logo": "/hospital/logo.jpg",
+  "tituloSistema": "Prontuário",
+  "diasMaximosAtrasoAtendimento": 31,
+  "anoMinimoAdmissao": 2000
+}

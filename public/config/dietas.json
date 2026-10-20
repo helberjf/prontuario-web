@@ -1,0 +1,13 @@
+{
+  "semDieta": "Sem dieta informada",
+  "opcoes": [
+    "DIETA ZERO",
+    "DIETA ORAL LIVRE",
+    "DIETA BRANDA",
+    "DIETA PASTOSA",
+    "DIETA LÍQUIDA",
+    "DIETA ORAL PARA IDADE",
+    "DIETA PARA DIABÉTICO",
+    "DIETA HIPOSSÓDICA"
+  ]
+}
