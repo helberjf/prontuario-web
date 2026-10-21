@@ -46,6 +46,20 @@ NODE_ENV=production npm run api   # serve a API e o site (pasta dist) na mesma p
 
 Em produção o cookie de sessão passa a exigir HTTPS (`Secure`). Hospede atrás de HTTPS (Render, Railway, Fly, VPS com Caddy/Nginx…). Como o servidor é Express, não é um site estático.
 
+### Vercel
+
+O `vercel.json` publica o frontend Vite e encaminha `/api/*` para a função Express em `api/index.js`. A função inclui os JSONs de configuração e o esquema SQL; não inicia um servidor com `listen`.
+
+1. Importe este repositório na Vercel.
+2. Em **Storage**, crie/conecte um banco **Neon** ao projeto. A integração deve fornecer `DATABASE_URL` (ou `POSTGRES_URL`). Prefira a região São Paulo (`gru1`), usada pela função.
+3. Em **Environment Variables**, configure `ADMIN_EMAIL` e `ADMIN_PASSWORD` para **Production**. A senha precisa de 12+ caracteres e até 72 bytes. `ADMIN_NAME` é opcional.
+4. Faça um novo deploy. Na primeira chamada à API, as tabelas são criadas com `IF NOT EXISTS` e o administrador é criado/atualizado com senha bcrypt. As demais contas e os prontuários existentes são preservados.
+5. Entre com o e-mail e a senha configurados. Login, sessão e histórico usam a API do próprio domínio.
+
+`JWT_SECRET` aleatório de 32+ caracteres é recomendado, mas opcional com o administrador configurado: na ausência dele, a chave de sessão é derivada por scrypt da senha e do e-mail, de forma consistente entre instâncias. Nesse caso, trocar a senha invalida as sessões. Credenciais nunca usam prefixo `VITE_` nem entram no frontend.
+
+Sem banco persistente configurado, a API retorna 503. Não existe fallback para armazenamento em memória na Vercel. Alterações nas variáveis só entram em vigor após um novo deploy. `ADMIN_EMAIL` e `ADMIN_PASSWORD` devem ser configurados juntos; sem eles, `JWT_SECRET` continua permitindo o uso das contas criadas pelo CLI.
+
 ## O que fica em `public/` (editável sem programar)
 
 | Arquivo | Para quê |
