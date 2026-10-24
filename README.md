@@ -84,6 +84,8 @@ Nada é herdado do modelo. A prescrição só tem a dieta escolhida, os itens **
 
 ## Regras que valem aqui (e no Google Forms)
 
+O preenchimento segue as seções do Google Forms do hospital: **enfermaria → prescrição → identificação → evolução**, com **Voltar/Avançar**, dieta de escolha única com **Outro** e caixas de seleção para os itens. RN fica na prescrição da puérpera; receita de alta tem caminho próprio. Veja a [comparação de campos e fluxo](docs/preenchimento-google-forms.md).
+
 - **Campo clínico vazio nunca vira achado normal.** Fica "NÃO INFORMADO — PREENCHER" (ou "SEM AVALIAÇÃO REGISTRADA — PREENCHER" no exame) e aparece na lista de avisos.
 - **Data e hora do atendimento** (opcionais; vazias = agora) valem para o cabeçalho, as assinaturas, os dias de internação e a conferência da idade. Não podem ser futuras nem ter mais de 31 dias.
 - **Idade composta** ("66", "1 ano e 3 meses", "3 meses e 10 dias", "15d") é conferida com o nascimento na data do atendimento.
