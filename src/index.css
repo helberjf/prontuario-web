@@ -88,6 +88,7 @@ button:disabled { opacity: .6; cursor: progress; }
 .formulario-etapas .caixa { align-items: flex-start; overflow-wrap: anywhere; }
 .formulario-etapas .caixa input { flex: 0 0 18px; margin-top: 2px; }
 .formulario-etapas .caixas > .campo { margin-top: 10px; }
+.formulario-etapas .rodape-form { position: static; background: none; padding-top: 0; }
 .etapa-contagem { margin: 0 0 10px; }
 .introducao-form { margin-bottom: 24px; }
 #titulo-etapa:focus { outline: none; }
