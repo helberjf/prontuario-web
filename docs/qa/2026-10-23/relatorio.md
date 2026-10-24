@@ -2,7 +2,7 @@
 
 ## Resultado final
 
-- Playwright: **80 aprovados, zero falhas, zero ignorados**, sem retries automáticos; rodada final em 49,4 segundos.
+- Playwright: **80 aprovados, zero falhas, zero ignorados**, sem retries automáticos.
 - Vitest: **90 aprovados** em nove arquivos.
 - Build e lint aprovados. `npm audit` sem vulnerabilidades após atualizar `body-parser` de 2.3.0 para 2.4.0.
 - Chromium com Playwright 1.64.1. Quatro projetos: desktop 1440×900 e celular simulado 390×844, em claro e escuro. A geometria também é verificada em 320, 360 e 768 pixels.
@@ -24,7 +24,9 @@ As capturas das oito telas por projeto foram geradas e as telas representativas 
 | Cabeçalho móvel com 172 px e navegação em três linhas | Grade de navegação com três botões na mesma linha; teste com nome longo exige até 132 px em 320 e 390 px. |
 | Receita de alta mostrava “a prescrição passou de 0 itens” | O bloco ITENS da alta não passa pelo cálculo de continuação da tabela RX_n. Testes de UI e DOCX confirmam ausência do falso aviso. |
 
-Uma rodada intermediária teve timeout isolado na abertura inicial do primeiro teste de design. A rodada final completa terminou sem falhas e sem retries. Isso não equivale a uma garantia sobre redes ou dispositivos de usuários.
+Nas rodadas com dois navegadores simultâneos ocorreram timeouts intermitentes na abertura inicial, com requisições pendentes no trace. O diagnóstico com um único navegador e dois contextos carregou o app em 100–110 ms. A configuração usa um worker no Windows e mantém os mesmos timeouts, sem sleeps nem retries para contornar assertions. A rodada final serializada terminou sem falhas. Isso não equivale a uma garantia sobre redes ou dispositivos de usuários.
+
+O histórico é capturado depois da resposta da API e com registros fictícios já carregados. A tabela pode rolar horizontalmente dentro de sua área; os testes verificam que a página não alarga e que o botão Reabrir fica acessível após a rolagem. A verificação de produção também passou com login, quatro combinações de tela/tema e logout, sem erros de JavaScript e sem criar prontuários.
 
 ## Codegen
 

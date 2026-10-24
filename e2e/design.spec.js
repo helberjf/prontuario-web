@@ -9,6 +9,8 @@ async function conferirDesign(page, info, tela) {
   const largura = await page.evaluate(() => ({ janela: innerWidth, conteudo: document.documentElement.scrollWidth }));
   expect.soft(largura.conteudo, `${tela}: sem rolagem horizontal da página`).toBeLessThanOrEqual(largura.janela + 1);
   const fora = await page.locator('main input, main select, main textarea, main button, .topo button').evaluateAll(es => es.filter(e => {
+    // A tabela tem sua própria rolagem horizontal; ela não pode alargar a página.
+    if (e.closest('.tabela-rolavel')) return false;
     const r = e.getBoundingClientRect();
     return r.width && (r.left < -1 || r.right > innerWidth + 1);
   }).map(e => e.getAttribute('aria-label') || e.textContent || e.tagName));
@@ -39,9 +41,20 @@ test('design e acessibilidade das etapas', async ({ page }, info) => {
   await conferirDesign(page, info, 'puerpera-rn');
   await iniciar(page, 'alta-puerpera');
   await conferirDesign(page, info, 'alta');
+  const nomeHistorico = `TESTE VISUAL HISTÓRICO ${info.project.name.toUpperCase()}`;
+  const salvo = await page.request.post('/api/prontuarios', { data: { enfermaria_id: 'masculina', dados: { nome: nomeHistorico } } });
+  expect(salvo.status()).toBe(201);
+  const carregou = page.waitForResponse(r => r.url().includes('/api/prontuarios') && r.request().method() === 'GET');
   await page.getByRole('button', { name: 'Histórico', exact: true }).click();
+  await carregou;
   await expect(page.getByRole('heading', { name: 'Prontuários gerados', exact: true })).toBeVisible();
+  await expect(page.getByRole('row').filter({ hasText: nomeHistorico })).toBeVisible();
   await conferirDesign(page, info, 'historico');
+  const reabrir = page.getByRole('row').filter({ hasText: nomeHistorico }).getByRole('button', { name: 'Reabrir como novo', exact: true });
+  await reabrir.scrollIntoViewIfNeeded();
+  const posicao = await reabrir.boundingBox();
+  expect(posicao.x).toBeGreaterThanOrEqual(0);
+  expect(posicao.x + posicao.width).toBeLessThanOrEqual(page.viewportSize().width + 1);
   expect(erros).toEqual([]);
 });
 

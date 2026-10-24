@@ -4,7 +4,8 @@ export default defineConfig({
   testDir: './e2e',
   testMatch: '**/*.spec.js',
   fullyParallel: true,
-  workers: 2,
+  // Serializa no Windows após timeouts observados com navegadores simultâneos.
+  workers: process.platform === 'win32' ? 1 : 2,
   timeout: 30000,
   expect: { timeout: 7000 },
   forbidOnly: Boolean(process.env.CI),
