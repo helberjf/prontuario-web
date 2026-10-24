@@ -102,6 +102,21 @@ O preenchimento segue as seções do Google Forms do hospital: **enfermaria → 
 
 ## Testes
 
+### Navegador e design (Playwright)
+
+```bash
+npm install
+npx playwright install chromium
+npm run test:e2e
+npm run test:e2e:report
+```
+
+A suíte usa Chromium em desktop e celular simulados, nos temas claro e escuro. Cobre os oito caminhos, validações, voltar/avançar, dieta personalizada, download DOCX real, histórico e reabertura. O servidor serve o build de produção com banco isolado em memória, sem ler `.env` nem acessar o Neon. As capturas e os resultados do axe ficam no relatório HTML.
+
+O design também é conferido entre 320 e 1440 pixels, incluindo o contraste dos botões em estado normal/hover sobre o gradiente. A inspeção das capturas complementa os testes automáticos de acessibilidade.
+
+Para gravar um roteiro no Inspector, use `npm run test:e2e:codegen`; veja [as instruções do gravador](e2e/codegen/README.md). Para verificar a produção sem criar prontuários, defina `E2E_EMAIL` e `E2E_PASSWORD` no ambiente e rode `node e2e/verificar-online.mjs`. As credenciais não são gravadas no código nem nos relatórios.
+
 ```bash
 npm test
 ```

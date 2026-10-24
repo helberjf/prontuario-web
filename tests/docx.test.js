@@ -129,12 +129,13 @@ describe('receita de alta', () => {
   };
 
   it('lista os itens numerados com nome, data e rodapé', () => {
-    const { texto } = alta({ nome: 'Ana Souza', prescricao: 'item a\nitem b' });
+    const { texto, dados } = alta({ nome: 'Ana Souza', prescricao: 'item a\nitem b' });
     expect(texto).toContain('NOME DO PACIENTE: ANA SOUZA');
     expect(texto).toContain('01 – ITEM A');
     expect(texto).toContain('02 – ITEM B');
     expect(texto).toContain(hospital.endereco);
     expect(texto).not.toContain('SEM PRESCRIÇÃO');
+    expect(dados.avisos).toEqual([]);
   });
 
   it('sem itens, avisa em vez de inventar prescrição', () => {

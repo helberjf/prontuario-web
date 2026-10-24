@@ -4,6 +4,9 @@
   --verde-escuro: #11401f;
   --verde-medio: #2f7d4a;
   --verde-claro: #e6f2ea;
+  --topo-inicio: #11401f;
+  --topo-meio: #1a5a30;
+  --topo-fim: #2f7d4a;
   --texto: #18231c;
   --suave: #5b6b62;
   --borda: #d5e0d8;
@@ -32,14 +35,14 @@ body { margin: 0; background: var(--fundo); color: var(--texto); }
 main { max-width: 980px; margin: 0 auto; padding: 24px 16px 40px; }
 
 /* Cabeçalho */
-.topo { display: flex; align-items: center; gap: 14px; padding: 10px clamp(12px, 4vw, 32px); background: linear-gradient(120deg, var(--verde-escuro), var(--verde) 70%, var(--verde-medio)); color: #fff; position: sticky; top: 0; z-index: 5; flex-wrap: wrap; box-shadow: 0 2px 12px rgb(0 0 0 / .18); }
+.topo { display: flex; align-items: center; gap: 14px; padding: 10px clamp(12px, 4vw, 32px); background: linear-gradient(120deg, var(--topo-inicio), var(--topo-meio) 70%, var(--topo-fim)); color: #fff; position: sticky; top: 0; z-index: 5; flex-wrap: wrap; box-shadow: 0 2px 12px rgb(0 0 0 / .18); }
 .topo img { height: 44px; width: 44px; object-fit: contain; background: #fff; border-radius: 12px; padding: 3px; }
 .topo div { display: flex; flex-direction: column; margin-right: auto; line-height: 1.2; }
 .topo strong { font-size: 1.05rem; letter-spacing: .01em; }
 .topo span { font-size: .78rem; opacity: .8; text-transform: uppercase; letter-spacing: .06em; }
 .topo nav { display: flex; gap: 6px; flex-wrap: wrap; }
-.topo button { background: rgb(255 255 255 / .1); color: #fff; border-color: rgb(255 255 255 / .22); }
-.topo button:hover:not(:disabled) { background: rgb(255 255 255 / .2); border-color: rgb(255 255 255 / .5); }
+.topo button { background: rgb(0 0 0 / .15); color: #fff; border-color: rgb(255 255 255 / .22); }
+.topo button:hover:not(:disabled):not([aria-current='page']) { background: rgb(0 0 0 / .25); border-color: rgb(255 255 255 / .5); }
 .topo button[aria-current='page'] { background: #fff; color: var(--verde-escuro); border-color: #fff; }
 
 /* Cartões */
@@ -113,6 +116,9 @@ tbody tr:hover { background: var(--verde-claro); }
 @media (max-width: 520px) {
   main { padding: 14px 10px 32px; }
   section { padding: 16px 14px; }
+  .topo { gap: 8px 10px; }
+  .topo nav { display: grid; width: 100%; grid-template-columns: auto auto minmax(0, 1fr); }
+  .topo button { padding: 8px 10px; font-size: .8rem; overflow-wrap: anywhere; }
   .topo span { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
